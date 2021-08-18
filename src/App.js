@@ -1,27 +1,28 @@
 /** @jsx jsx */
-import React, { useState } from 'react'
-import { css, jsx } from '@emotion/core'
-import AutoForm from './components/AutoForm'
-import config from './config'
+import React, { useState } from 'react';
+import { css } from '@emotion/core';
+import { jsx } from '@emotion/react';
+import AutoForm from './components/AutoForm';
+import config from './config';
 
 const App = () => {
-  const [status, setStatus] = useState('')
+  const [status, setStatus] = useState('');
 
   const handleSubmit = form => {
-    setStatus('loading')
+    setStatus('loading');
 
     setTimeout(() => {
-      setStatus('success')
-    }, 3000)
-  }
+      setStatus('success');
+    }, 3000);
+  };
 
   return (
     <div css={ContainerCSS}>
       <h1>Get VIP Access</h1>
       <AutoForm form={config} onSubmit={handleSubmit} status={status} />
     </div>
-  )
-}
+  );
+};
 
 const ContainerCSS = css`
   padding: 125px 0 0 80px;
@@ -30,6 +31,6 @@ const ContainerCSS = css`
     font-size: 56px;
     margin: 0 0 15px;
   }
-`
+`;
 
-export default App
+export default App;
