@@ -1,11 +1,35 @@
-import React from "react";
-import "./style.css";
+/** @jsx jsx */
+import React, { useState } from 'react'
+import { css, jsx } from '@emotion/core'
+import AutoForm from './components/AutoForm'
+import config from './config'
 
-export default function App() {
+const App = () => {
+  const [status, setStatus] = useState('')
+
+  const handleSubmit = form => {
+    setStatus('loading')
+
+    setTimeout(() => {
+      setStatus('success')
+    }, 3000)
+  }
+
   return (
-    <div>
-      <h1>Hello StackBlitz!</h1>
-      <p>Start editing to see some magic  :)</p>
+    <div css={ContainerCSS}>
+      <h1>Get VIP Access</h1>
+      <AutoForm form={config} onSubmit={handleSubmit} status={status} />
     </div>
-  );
+  )
 }
+
+const ContainerCSS = css`
+  padding: 125px 0 0 80px;
+  h1 {
+    color: #fff;
+    font-size: 56px;
+    margin: 0 0 15px;
+  }
+`
+
+export default App
